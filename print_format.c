@@ -20,7 +20,7 @@ int print_format(char specifier, va_list ap)
 		counter += print_string(va_arg(ap, char *));
 	else if (specifier == 'd' || specifier == 'i')
 		counter += print_digit((long)(va_arg(ap, int)), 10);
-	else if (specifier == 'x')		
+	else if (specifier == 'x')
 		counter += print_digit((long)va_arg(ap, unsigned int), 16);
 	else if (specifier == '%')
 		counter += print_percent();
