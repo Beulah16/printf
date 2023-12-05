@@ -24,6 +24,8 @@ int print_format(char specifier, va_list ap)
 		counter += print_digit((long)va_arg(ap, unsigned int), 16);
 	else if (specifier == '%')
 		counter += print_percent();
+	else if (specifier == 'b')
+		counter += print_binary(ap);
 	else
 		counter += write(1, &specifier, 1);
 	return (counter);

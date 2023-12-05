@@ -70,3 +70,35 @@ int print_percent(void)
 	print_char(37);
 	return (1);
 }
+
+/**
+ * print_binary - function that prints a binary number
+ * @val : input parameter
+ * Return: the binary number in the form of integers
+ */
+
+int print_binary(va_list val)
+{
+	int counter = 0, flag = 0, i, j = 1, k;
+	unsigned int value = va_arg(val, unsigned int);
+	unsigned int m;
+
+	for (i = 0; i < 32; i++)
+	{
+		m = ((j << (31 - i)) & value);
+		if (m >> (31 - i))
+			flag = 1;
+		if (flag)
+		{
+			k = m >> (31 - i);
+			print_char(k + 48);
+			counter++;
+		}
+	}
+	if (counter == 0)
+	{
+		counter++;
+		print_char('0');
+	}
+	return (counter);
+}
