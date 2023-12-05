@@ -4,26 +4,27 @@
 /**
  * print_format - a function that analyses argument types
  * for the _printf function
- * @specifier: character specifier
- * @ap: arguement pointer
+ * @specifier: input character specifier
+ * @ap: input arguement pointer
  *
- * Return: number of characters printed
+ * Return: the number of characters printed
  */
 
 int print_format(char specifier, va_list ap)
 {
-	int count;
+	int counter = 0;
 
-	count = 0;
 	if (specifier == 'c')
-		count += print_char(va_arg(ap, int));
+		counter += print_char(va_arg(ap, int));
 	else if (specifier == 's')
-		count += print_string(va_arg(ap, char *));
+		counter += print_string(va_arg(ap, char *));
 	else if (specifier == 'd')
-		count += print_digit((long)(va_arg(ap, int)), 10);
+		counter += print_digit((long)(va_arg(ap, int)), 10);
 	else if (specifier == 'x')		
-		count += print_digit((long)va_arg(ap, unsigned int), 16);
+		counter += print_digit((long)va_arg(ap, unsigned int), 16);
+	else if (specifier == '%')
+		counter += print_percent(va_arg(ap, int));
 	else
-		count += write(1, &specifier, 1);
-	return (count);
+		counter += write(1, &specifier, 1);
+	return (counter);
 }

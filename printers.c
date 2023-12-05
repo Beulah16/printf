@@ -1,9 +1,9 @@
 #include "main.h"
 
 /**
- * print_char - prints a character
- * @c: character to be printed
- * Return: number of characters
+ * print_char - function that prints a character
+ * @c: input character to be printed
+ * Return: the number of characters
  */
 
 int print_char(int c)
@@ -12,35 +12,34 @@ int print_char(int c)
 }
 
 /**
- * print_string - prints  string
- * @str: string to be printed
- * Return: number of characters
+ * print_string - function that prints  string
+ * @str: input string to be printed
+ * Return: the number of characters
  */
 
 int print_string(char *str)
 {
-	int count;
+	int counter = 0;
 
-	count = 0;
 	while (*str != '\0')
 	{
 		print_char((int)*str);
 		++count;
 		++str;
 	}
-	return (count);
+	return (counter);
 }
 
 /**
- * print_digit - print integers
- * @n: intger to be printed
- * @base: base of the integer
- * Return: number of characters
+ * print_digit - function that prints integers
+ * @n: input integer to be printed
+ * @base: input base of the integer
+ * Return: the number of characters
  */
 
 int print_digit(long n, int base)
 {
-	int count;
+	int counter;
 	char *symbols;
 
 	symbols = "0123456789abcdef";
@@ -56,7 +55,18 @@ int print_digit(long n, int base)
 	}
 	else
 	{
-		count = print_digit(n / base, base);
-		return (count + print_digit(n % base, base));
+		counter = print_digit(n / base, base);
+		return (counter + print_digit(n % base, base));
 	}
+}
+
+/**
+ * print_percent - function that prints the percentage symbol
+ * Return: 1
+ */
+
+int print_percent(void)
+{
+	print_char(37);
+	return (1);
 }
