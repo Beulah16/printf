@@ -37,28 +37,34 @@ int print_string(char *str)
  * Return: the number of characters
  */
 
-int print_digit(long n, int base)
+int print_digit(long n, int base, char specifier)
 {
 	int counter;
 	char *symbols;
+	char *capital_symbols;
 
 	symbols = "0123456789abcdef";
+	capital_symbols = "0123456789ABCDEF";
 
 	if (n < 0)
 	{
 		print_char('-');
-		return (print_digit(-n, base) + 1);
+		return (print_digit(-n, base, specifier)+ 1);
 	}
 	else if (n < base)
 	{
-		return (print_char(symbols[n]));
+		if (specifier == 'X')
+			return (print_char(capital_symbols[n]));
+		else
+			return (print_char(symbols[n]));
 	}
 	else
 	{
-		counter = print_digit(n / base, base);
-		return (counter + print_digit(n % base, base));
+		counter = print_digit(n / base, base, specifier);
+		return (counter + print_digit(n % base, base, specifier));
 	}
 }
+
 
 /**
  * print_percent - function that prints the percentage symbol
