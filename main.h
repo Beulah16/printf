@@ -14,5 +14,7 @@ int print_string(char *str);
 int print_digit(long n, int base, char specifier);
 int print_percent(void);
 int print_binary(va_list val);
+int print_Estring(va_list val);
+int print_HEX(unsigned long int num);
 
 #endif
