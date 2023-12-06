@@ -26,6 +26,8 @@ int print_format(char specifier, va_list ap)
 		counter += print_percent();
 	else if (specifier == 'b')
 		counter += print_binary(ap);
+	else if (specifier == 'S')
+		counter += print_Estring(ap);
 	else
 		counter += write(1, &specifier, 1);
 	return (counter);
